@@ -4,6 +4,11 @@
 
 ![image](https://user-images.githubusercontent.com/70543460/209965346-78ea05c5-ad92-446a-935f-c74f146ae333.png)
 
+## Quick Navigation:
+
+- **[(1) Testing the web application](https://github.com/Cyb3rDoctor/YogoshaChristmasChallenge2022/blob/main/KaraJutsusPlatform.md#1-testing-the-web-application)**
+- **[(2) Getting the flag](https://github.com/Cyb3rDoctor/YogoshaChristmasChallenge2022/blob/main/KaraJutsusPlatform.md#2-getting-the-flag)**
+
 ## Solution:
 
 ### (1) Testing the web application:
@@ -45,7 +50,7 @@ And I got the following request:
 
 ![image](https://user-images.githubusercontent.com/70543460/209967687-a655ac90-c39f-4430-aa8d-115259ee3378.png)
 
-<br/>
+----------
 
 ### (2) Getting the flag:
 
