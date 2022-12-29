@@ -52,6 +52,10 @@ Finally, ```include($_GET["karma"]);``` causes the PHP interpreter to include an
 
 ----------
 
+![image](https://user-images.githubusercontent.com/70543460/209975512-bbd481bf-bd2a-408e-95d3-d725069d4560.png)
+
+----------
+
 ### (2) LFI:
 
 After understanding the source code, I tried passing ``/etc/passwd`` to the **karma** parameter, and the content was printed out:
