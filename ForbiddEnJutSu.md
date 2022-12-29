@@ -4,6 +4,11 @@
 
 ![image](https://user-images.githubusercontent.com/70543460/209949450-0119cb60-c0d1-4016-8b2a-42d2b3709560.png)
 
+## Quick Navigation:
+
+- **[(1) Understanding the source code](https://github.com/Cyb3rDoctor/YogoshaChristmasChallenge2022/blob/main/ForbiddEnJutSu.md#1-understanding-the-source-code)**
+- **[(2) LFI](https://github.com/Cyb3rDoctor/YogoshaChristmasChallenge2022/blob/main/ForbiddEnJutSu.md#2-lfi)**
+- **[(3) LFI to RCE](https://github.com/Cyb3rDoctor/YogoshaChristmasChallenge2022/blob/main/ForbiddEnJutSu.md#3-lfi-to-rce)**
 
 ## Solution:
 
